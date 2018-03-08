@@ -13,14 +13,11 @@ results <- decideTests(fit2)
 write.fit(fit2, results, "myoutputdata.txt", adjust="BH")
 
 
-mouth<-topTable(fit2, coef=1, number=30, adjust="BH")
-skin<-topTable(fit2, coef=2, number=30, adjust="BH")
+mouth<-as.matrix(topTable(fit2, coef=1, number=30, adjust="BH"))
+skin<-as.matrix(topTable(fit2, coef=2, number=30, adjust="BH"))
 
 
-mouth_m<-as.matrix(mouth)
-skin_m<-as.matrix(skin)
-
-tops<-cbind(row.names(mouth_m),row.names(skin_m))
+tops<-cbind(row.names(mouth),row.names(skin))
 col_names<-c('mouth','skin')
 colnames(tops)<-col_names
 tops<-as.matrix(tops)
